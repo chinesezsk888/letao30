@@ -30,7 +30,7 @@
         <div class="nav">
             <ul>
                 <li>
-                    <a href="user.html">
+                    <a href="user.html" class="current">
                         <i class="glyphicon glyphicon-user"></i>
                         <span>用户管理</span>
                     </a>
@@ -40,8 +40,8 @@
                         <i class="glyphicon glyphicon-list"></i>
                         <span>分类管理</span>
                     </a>
-                    <div class="directory">
-                        <a href="first.html">一级目录</a>
+                    <div class="directory" style="display: block">
+                        <a href="first.html" class="current">一级目录</a>
                         <a href="second.html">二级目录</a>
                     </div>
                 </li>
@@ -73,35 +73,76 @@
                 <li class="active">首页</li>
             </ol>
 
-            
+
+            <!-- 表格 -->
+            <div class="It_content">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>用户名</th>
+                            <th>手机号</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       <tr>
+                            <td>1</td>
+                            <td>itcast</td>
+                            <td>15757771111</td>
+                            <td>正常</td>
+                            <td><button class="btn btn-danger">禁用</button></td>
+                       </tr>
+                       <tr>
+                            <td>1</td>
+                            <td>itcast</td>
+                            <td>15757771111</td>
+                            <td>正常</td>
+                            <td><button class="btn btn-danger">禁用</button></td>
+                          </tr>
+                          <tr>
+                            <td>1</td>
+                            <td>itcast</td>
+                            <td>15757771111</td>
+                            <td>正常</td>
+                            <td><button class="btn btn-danger">禁用</button></td>
+                          </tr>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
     </div>
-        <!-- 模态框 -->
-        <!-- 外层div是蒙层 -->
-        <div class="modal fade" id="myModal" tabindex="-1">
-            <!-- 内层模态框 -->
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">温馨提示</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p class="red">
-                            <i class="glyphicon glyphicon-info-sign"></i>
-                            <span>您确定要退出后台管理系统吗？</span>
-                        </p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button type="button" class="btn btn-primary">退出</button>
-                    </div>
+
+
+
+    <!-- 模态框 -->
+    <!-- 外层div是蒙层 -->
+    <div class="modal fade" id="myModal" tabindex="-1">
+        <!-- 内层模态框 -->
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">温馨提示</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="red">
+                        <i class="glyphicon glyphicon-info-sign"></i>
+                        <span>您确定要退出后台管理系统吗？</span>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary">退出</button>
                 </div>
             </div>
         </div>
+    </div>
 
 
-    
+
 
 
 
@@ -112,10 +153,10 @@
     <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
     <!-- 进度条 -->
     <script src="./lib/nprogress/nprogress.js"></script>
-   
+
     <script src="./js/common.js"></script>
     <script src="./js/isLogin.js"></script>
-   
+
 
 </body>
 
