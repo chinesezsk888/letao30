@@ -26,3 +26,43 @@
     })
 
 })();
+
+
+// 公共功能
+ //1.左侧二级菜单切换功能
+ $('#category').click(function(){
+     $(this).next().stop().slideToggle(400);
+ })
+ //2.左侧菜单切换功能
+ $(".header .pull-left").click(function(){
+     $('.lt_aside').toggleClass("hidemenu");
+     $('.header').toggleClass("hidemenu");
+     $('.main').toggleClass("hidemenu");
+ })
+ //3.模态框
+ $('.pull-right').click(function(){
+    $('#myModal').modal('show');
+ })
+ //3.1点击取消按钮，退出模态框
+ $('.modal-footer .btn-default').click(function(){
+    $('#myModal').modal('hide');
+ })
+ /*3.2点击退出按钮，退出到用户重新登入页面，
+ 所谓重新登入就是点击退出按钮后，后台注销当前用户的登入状态，
+ 前端要做就是获取接口
+ 
+*/
+ $('.modal-footer .btn-primary').click(function(){
+   $.ajax({
+       type:"get",
+       url:"/employee/employeeLogout",
+       dataType:"json",
+       success:function(info){
+        //    console.log(info);
+         if(info.success){
+        // 销毁登录状态成功, 退出成功, 跳转登录页
+        location.href="login.html";
+         }
+       }
+   })
+ })
