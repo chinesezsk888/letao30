@@ -28,6 +28,9 @@ $(function () {
                         max: 6,
                         message: '用户名长度在2到6之间'
                     },
+                    callback:{
+                        message:"用户名不存在",
+                    }
 
                 }
 
@@ -46,6 +49,10 @@ $(function () {
                         min: 6,
                         max: 12,
                         message: '密码长度在6到12之间'
+                    },
+                    //专门用于ajax回调提示的说明
+                    callback:{
+                        message:"密码错误",
                     }
                 }
             },
@@ -73,11 +80,15 @@ $(function () {
                 }
                 if (info.error === 1000) {
                     //用户名不存在
-                    alert(info.message);
+                    // alert(info.message);
+                    
+                    $("#form").data("bootstrapValidator").updateStatus("username","INVALID","callback");
                 }
                 if (info.error === 1001) {
                     //密码错误
-                    alert(info.message);
+                    // alert(info.message);
+                    
+                    $("#form").data("bootstrapValidator").updateStatus("password","INVALID","callback");
                 }
             }
 

@@ -2,14 +2,21 @@
     background-color: #222D32;
     
 }
+.mg_top{
+ margin-top:150px;
+}
+
+
+
+
 /* 登入页面 */
 .panel{
     margin:0 auto;
     border-radius: 6px;
 }
-.mg_top{
-     margin-top:150px;
-}
+
+
+
 .panel .panel-heading{
     height:61px;
     text-align: center;
@@ -19,4 +26,8 @@
 .panel .panel-heading .panel-title{
     font-size: 20px;
     line-height: 40px;
+}
+#form .form-group .wordo{
+   display:inline-block;
+   margin-right:9px;
 }
