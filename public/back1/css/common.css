@@ -159,3 +159,11 @@ a:active{
     color:#fff;
     font-size: 20px;
 }
+
+/* 图表 */
+.It_content .echarts_left,
+.It_content .echarts_right {
+  width: 48%;
+  height: 400px;
+  /* background-color: lime; */
+}

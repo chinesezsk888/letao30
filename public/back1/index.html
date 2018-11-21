@@ -30,7 +30,7 @@
         <div class="nav">
             <ul>
                 <li>
-                    <a href="javascript:;">
+                    <a href="user.html">
                         <i class="glyphicon glyphicon-user"></i>
                         <span>用户管理</span>
                     </a>
@@ -41,12 +41,12 @@
                         <span>分类管理</span>
                     </a>
                     <div class="directory">
-                       <a href="javascript:;">一级目录</a>
-                       <a href="javascript:;">二级目录</a>
-                   </div>
+                        <a href="first.html">一级目录</a>
+                        <a href="second.html">二级目录</a>
+                    </div>
                 </li>
                 <li>
-                    <a href="javascript:;">
+                    <a href="product.html">
                         <i class="glyphicon glyphicon-tags"></i>
                         <span>商品管理</span>
                     </a>
@@ -56,60 +56,56 @@
         </div>
     </div>
 
-<!-- 右侧栏 -->
-<div class="main">
-    <!-- 头部 -->
-    <div class="header ">
-        <a href="#" class="pull-left"><i class="glyphicon glyphicon-align-justify"></i></a>
-        <a href="#" class="pull-right"><i class="glyphicon glyphicon-log-out"></i></a>
-    </div>
-  
-  
-    <!-- 流式布局容器 container-fluid 特征: 宽度100%,  默认有左右的 15px padding -->
-    <div class="container-fluid">
-       <!-- 链接导航,路径导航 -->
-       <ol class="breadcrumb mt_20">
-           <li><a href="index.html">管理系统</a></li>
-           <li class="active">首页</li>
-       </ol>
+    <!-- 右侧栏 -->
+    <div class="main">
+        <!-- 头部 -->
+        <div class="header ">
+            <a href="#" class="pull-left"><i class="glyphicon glyphicon-align-justify"></i></a>
+            <a href="#" class="pull-right"><i class="glyphicon glyphicon-log-out"></i></a>
+        </div>
 
-    </div>
 
-    <!-- 模态框 -->
-    <!-- 外层div是蒙层 -->
-    <div class="modal fade" id="myModal" tabindex="-1">
-    <!-- 内层模态框 --> 
-            <div class="modal-dialog modal-sm">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel">温馨提示</h4>
-                </div>
-                <div class="modal-body">
-                  <p class="red">
-                     <i class="glyphicon glyphicon-info-sign"></i>
-                     <span>您确定要退出后台管理系统吗？</span>
-                  </p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                  <button type="button" class="btn btn-primary">退出</button>
-                </div>
-              </div>
+        <!-- 流式布局容器 container-fluid 特征: 宽度100%,  默认有左右的 15px padding -->
+        <div class="container-fluid">
+            <!-- 链接导航,路径导航 -->
+            <ol class="breadcrumb mt_20">
+                <li><a href="index.html">管理系统</a></li>
+                <li class="active">首页</li>
+            </ol>
+
+            <!-- 两个图标:要求要是有宽高的容器 -->
+            <div class="It_content">
+                <div class="echarts_left pull-left"></div>
+                <div class="echarts_right pull-right"></div>
             </div>
-          </div>
+        </div>
+    </div>
+        <!-- 模态框 -->
+        <!-- 外层div是蒙层 -->
+        <div class="modal fade" id="myModal" tabindex="-1">
+            <!-- 内层模态框 -->
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">温馨提示</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p class="red">
+                            <i class="glyphicon glyphicon-info-sign"></i>
+                            <span>您确定要退出后台管理系统吗？</span>
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary">退出</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
-
-
-   <!-- 两个图标:要求要是有宽高的容器 -->
-
-
-   
-
-
-
-</div>
+    
 
 
 
@@ -124,7 +120,7 @@
     <script src="./lib/echarts/echarts.min.js"></script>
     <script src="./js/common.js"></script>
     <script src="./js/isLogin.js"></script>
-
+     <script src="./js/index.js"></script>
 
 </body>
 
