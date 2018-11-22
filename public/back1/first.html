@@ -70,38 +70,108 @@
             <!-- 链接导航,路径导航 -->
             <ol class="breadcrumb mt_20">
                 <li><a href="index.html">管理系统</a></li>
-                <li class="active">首页</li>
+                <li class="active">分类管理</li>
+                <li class="active">一级目录</li>
             </ol>
 
-            
+
+            <div class="It_content">
+                <!-- 按钮 -->
+                <button class="btn btn-default" id="addList">添加分类</button>
+                <!-- 表格 -->
+                <table class="table table-bordered table-hover mt_20">
+                    <thead>
+                        <tr>
+                            <th width=20%>序号</th>
+                            <th width=80%>一级分类名</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- 挖个坑 -->
+                    </tbody>
+                </table>
+
+                <!-- 分页 -->
+
+                <div class="text-right">
+                    <ul id="paginator"></ul>
+                </div>       
+            </div>
+
         </div>
     </div>
-        <!-- 模态框 -->
-        <!-- 外层div是蒙层 -->
-        <div class="modal fade" id="myModal" tabindex="-1">
+
+
+
+    <!-- 模态框 -->
+    <!-- 外层div是蒙层 -->
+    <div class="modal fade" id="myModal" tabindex="-1">
+        <!-- 内层模态框 -->
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">温馨提示</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="red">
+                        <i class="glyphicon glyphicon-info-sign"></i>
+                        <span>您确定要退出后台管理系统吗？</span>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="commonBtn">退出</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+     <!-- first模态框 -->
+     <div class="modal fade" id="firstModal" tabindex="-1">
             <!-- 内层模态框 -->
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
+                   <form id="form">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">温馨提示</h4>
+                        <h4 class="modal-title" id="myModalLabel">添加分类</h4>
                     </div>
                     <div class="modal-body">
-                        <p class="red">
-                            <i class="glyphicon glyphicon-info-sign"></i>
-                            <span>您确定要退出后台管理系统吗？</span>
-                        </p>
+                        <!-- 由于是要提交到后台的，所以这里的input是在form表单里面
+                        而在bootstrap中form表单中的input外面必须要有一个类名为
+                        form-group的盒子，并且input要有form-control类名
+                     -->
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="请输入一级分类名称" name="categoryName">
                     </div>
+                    </div>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button type="button" class="btn btn-primary">退出</button>
+                       <!-- 表单要想提交需要和sumbit一起使用 -->
+                        <button type="sumbit" class="btn btn-primary" id="submitBtn">添加</button>
                     </div>
+
+                </form>
+                    
                 </div>
             </div>
         </div>
 
-
-    
+    <!-- 准备模板 -->
+    <script type="text/html" id="firstTpl">
+    {{each rows v i}}
+        <tr>
+            <td>{{(i+1)+(page-1)*size}}</td>
+            <td>{{v.categoryName}}</td>
+        </tr>
+    {{/each}}
+    </script>
+   
 
 
 
@@ -112,10 +182,13 @@
     <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
     <!-- 进度条 -->
     <script src="./lib/nprogress/nprogress.js"></script>
-   
+    <!-- 引入模态框 -->
+    <script src="./lib/artTemplate/template-web.js"></script>
+    <!-- 引入分页插件 -->
+    <script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
     <script src="./js/common.js"></script>
     <script src="./js/isLogin.js"></script>
-   
+    <script src="./js/first.js"></script>
 
 </body>
 

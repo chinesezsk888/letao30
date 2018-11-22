@@ -15,6 +15,13 @@ ul{
     padding: 0;
 }
 
+/* 需求: 让所有表格的 th和td 内容居中 */
+.table.table-bordered th,
+.table.table-bordered td {
+  text-align: center;
+  vertical-align: middle;
+}
+
 a:link,
 a:hover,
 a:visited,
