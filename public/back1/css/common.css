@@ -146,6 +146,7 @@ a:active{
     background-color: #5D9ED1;
     padding-left: 180px;
     transition:padding-left 1s;
+    z-index: 99;
 }
 .header.hidemenu{
     padding-left: 0px;
