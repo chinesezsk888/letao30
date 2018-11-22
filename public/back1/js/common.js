@@ -52,7 +52,7 @@
  前端要做就是获取接口
  
 */
- $('.modal-footer .btn-primary').click(function(){
+ $('#commonBtn').click(function(){
    $.ajax({
        type:"get",
        url:"/employee/employeeLogout",
