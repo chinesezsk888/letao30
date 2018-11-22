@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- 设置适口 ：支持移动端 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>乐淘商城</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.css">
+    <link rel="stylesheet" href="./lib/nprogress/nprogress.css">
+</head>
+
+<body>
+    <!-- 侧边栏 -->
+    <div class="lt_aside">
+        <!-- 标题 -->
+        <div class="title">
+            <a href="#">前端好火</a>
+        </div>
+        <!-- 头像  -->
+        <div class="user">
+            <img src="./images/02.jpg" alt="">
+            <p>超级管理员</p>
+        </div>
+        <!-- 导航 -->
+        <div class="nav">
+            <ul>
+                <li>
+                    <a href="user.html" class="current">
+                        <i class="glyphicon glyphicon-user"></i>
+                        <span>用户管理</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;" id="category">
+                        <i class="glyphicon glyphicon-list"></i>
+                        <span>分类管理</span>
+                    </a>
+                    <div class="directory">
+                        <a href="first.html">一级目录</a>
+                        <a href="second.html">二级目录</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="product.html">
+                        <i class="glyphicon glyphicon-tags"></i>
+                        <span>商品管理</span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+    <!-- 右侧栏 -->
+    <div class="main">
+        <!-- 头部 -->
+        <div class="header ">
+            <a href="#" class="pull-left"><i class="glyphicon glyphicon-align-justify"></i></a>
+            <a href="#" class="pull-right"><i class="glyphicon glyphicon-log-out"></i></a>
+        </div>
+
+
+        <!-- 流式布局容器 container-fluid 特征: 宽度100%,  默认有左右的 15px padding -->
+        <div class="container-fluid">
+            <!-- 链接导航,路径导航 -->
+            <ol class="breadcrumb mt_20">
+                <li><a href="index.html">管理系统</a></li>
+                <li class="active">首页</li>
+            </ol>
+
+
+            <!-- 表格 -->
+            <div class="It_content">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>用户名</th>
+                            <th>手机号</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- 挖个坑 -->
+                    </tbody>
+                </table>       
+                <!-- 分页 -->
+                <!-- 准备一个分页容器, bootstrap 3 的版本要求是 ul -->
+             <div class="text-right">
+                 <!-- 分页插件在初始化的时候会给分页容器添加一个pagination的类名为防止
+                覆盖其他的类名最好给他创建一个父盒子-->
+                <ul id="paginator"></ul>
+             </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- 模态框 -->
+    <!-- 外层div是蒙层 -->
+    <div class="modal fade" id="myModal" tabindex="-1">
+        <!-- 内层模态框 -->
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">温馨提示</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="red">
+                        <i class="glyphicon glyphicon-info-sign"></i>
+                        <span>您确定要退出后台管理系统吗？</span>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="commonBtn">退出</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+     <!-- user模态框 -->
+    <!-- 外层div是蒙层 -->
+    <div class="modal fade" id="userModal" tabindex="-1">
+            <!-- 内层模态框 -->
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">温馨提示</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p class="red">
+                            <i class="glyphicon glyphicon-info-sign"></i>
+                            <span>你确定要执行此操作吗？</span>
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default user-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" id="submitBtn">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    <script type="text/html" id="userTpl">
+
+        <!-- 准备数据 -->
+    {{each rows v i}}
+    <tr>
+        <td>{{(page-1)*size+(i+1)}}</td>
+        <td>{{v.username}}</td>
+        <td>{{v.mobile}}</td>
+        <td>{{v.isDelete===1?"正常":"禁用"}}</td>
+        <td data-id="{{v.id}}">
+           {{if(v.isDelete===1)}}
+            <button class="btn btn-danger">禁用</button>
+           {{else}}
+            <button class="btn btn-success">启用</button>
+           {{/if}}
+        </td>
+    </tr>
+    {{/each}}
+  </script>
+
+
+
+
+
+    <script src="./lib/jquery/jquery.min.js"></script>
+    <!-- 引入bootstrap框架 -->
+    <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+    <!-- 表单的校验插件  -->
+    <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+    <!-- 进度条 -->
+    <script src="./lib/nprogress/nprogress.js"></script>
+    <!-- 模板引擎 -->
+    <script src="./lib/artTemplate/template-web.js"></script>
+    <!-- 引入分页插件 -->
+    <script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+    <script src="./js/common.js"></script>
+    <script src="./js/isLogin.js"></script>
+    <script src="./js/user.js"></script>
+
+
+</body>
+
+</html>
