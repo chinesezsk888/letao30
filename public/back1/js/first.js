@@ -102,7 +102,7 @@ $(function () {
                     currentPage = 1;
                     render();
                     //表单内容和状态重置
-                    $("#form").data("bootstrapValidator").resetForm();
+                    $("#form").data("bootstrapValidator").resetForm(true);
                 }
             }
         })
