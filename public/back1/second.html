@@ -73,68 +73,136 @@
                 <li class="active">分类管理</li>
                 <li class="active">二级分类</li>
             </ol>
-         <!-- 剩下部分 -->
-         <div class="It_content">
-             <!-- 添加按钮 -->
-             <button class="btn btn-default" id="addList">添加分类</button>
-             <!-- 表格 -->
-             <table class="table table-bordered table-hover mt_20">
-                 <thead>
-                     <tr>
-                         <th>序号</th>
-                         <th>一级分类名称</th>
-                         <th>二级分类名称</th>
-                         <th>二级分类LOGO</th>
-                     </tr>
-                 </thead>
-                 <tbody>
-                    <!--挖坑 -->
-                 </tbody>
-             </table>
-       
+            <!-- 剩下部分 -->
+            <div class="It_content">
+                <!-- 添加按钮 -->
+                <button class="btn btn-default" id="addList">添加分类</button>
+                <!-- 表格 -->
+                <table class="table table-bordered table-hover mt_20">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>一级分类名称</th>
+                            <th>二级分类名称</th>
+                            <th>二级分类LOGO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--挖坑 -->
+                    </tbody>
+                </table>
+
                 <!-- 分页 -->
                 <div class="text-right">
-                     <!-- 准备分页容器 -->
-                      <ul id="paginator"></ul>
+                    <!-- 准备分页容器 -->
+                    <ul id="paginator"></ul>
                 </div>
 
 
-         </div>
-          
-            
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <!-- 模态框 -->
+    <!-- 外层div是蒙层 -->
+    <div class="modal fade" id="myModal" tabindex="-1">
+        <!-- 内层模态框 -->
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">温馨提示</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="red">
+                        <i class="glyphicon glyphicon-info-sign"></i>
+                        <span>您确定要退出后台管理系统吗？</span>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary">退出</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- second模态框 -->
+    <div class="modal fade" id="secondModal" tabindex="-1">
+        <!-- 内层模态框 -->
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <form id="form">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">添加分类</h4>
+                    </div>
+                    <div class="modal-body">
+                        <!-- select下拉选框中不能设置默认值 -->
+                        <!-- <select placeholder="请输入一级目录">
+                               <option>1</option>
+                           </select> -->
+                        <!-- 1.下拉菜单 -->
+                        <div class="form-group">
+                            
+                            <div class="dropdown">
+                                <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">
+                                    <span id="secondAdd">请输入一级目录</span>
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <!-- 挖坑 -->
+                                </ul>
+                            </div>
+                            <!-- 由于下拉菜单的按钮时没有体叫功能的。所以这里利用隐藏域对添加的一级目录进行上传 -->
+                            <input type="hidden" name="categoryId">
+                            <!-- 火热的品牌 默认都火热  1火热  0不热 -->
+                            <!-- <input type="hidden" name="hot" value="1"> -->
+                        </div>
+
+                        <!-- 2.添加二级目录 -->
+                        <div class="form-group">
+                            <input type="text" class="form-control mt_20" name="brandName" placeholder="请输入二级目录">
+                        </div>
+
+                        <!-- 3.上传图片：是按钮格式，但是按钮是没有上传文件功能的，所以这里还是利用隐藏域 -->
+                            <!-- 1. type:file
+                            2. 必须指定name属性，因为后台通过这个name属性去获取图片
+                            3. 必须data-url：指定图片上传的地址 -->
+                        <div class="form-group">
+                            <label for="fileupload" class="btn btn-default">添加图片</label>
+                            <input type="file" id="fileupload" name="pic1" 
+                            data-url="/category/addSecondCategoryPic" style="display: none">
+                        </div>
+
+                       <!-- 4.图片的显示区 -->
+                        <div class="form-group" id="imgBox">
+                            <img src="./images/none.png" style="width:100px;" >
+                            <input type="hidden" name="brandLogo">
+                        </div>
+
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-primary secondBtn">添加</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 
 
 
-        <!-- 模态框 -->
-        <!-- 外层div是蒙层 -->
-        <div class="modal fade" id="myModal" tabindex="-1">
-            <!-- 内层模态框 -->
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">温馨提示</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p class="red">
-                            <i class="glyphicon glyphicon-info-sign"></i>
-                            <span>您确定要退出后台管理系统吗？</span>
-                        </p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button type="button" class="btn btn-primary">退出</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-  
 
-     <!-- 准备模板 -->
-     <script type="text/html" id="secondTpl"> 
-      {{each rows v i}}
+
+    <!-- 准备模板 -->
+    <script type="text/html" id="secondTpl">
+        {{each rows v i}}
         <tr>
             <td>{{(i+1)+(page-1)*size}}</td>
             <td>{{v.categoryName}}</td>
@@ -144,6 +212,16 @@
       {{/each}}
 </script>
 
+    <!-- 准备模板 -->
+    <script type="text/html" id="dropdownTpl">
+        {{each rows v i}}
+   <li><a href="#" data-id="{{v.id}}">{{v.categoryName}}</a></li>
+  {{/each}}
+
+</script>
+
+
+
 
     <script src="./lib/jquery/jquery.min.js"></script>
     <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
@@ -151,10 +229,13 @@
     <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
     <!-- 进度条 -->
     <script src="./lib/nprogress/nprogress.js"></script>
-   <!-- 引入模态框 -->
+    <!-- 引入模态框 -->
     <script src="./lib/artTemplate/template-web.js"></script>
     <!-- 引入分页插件 -->
     <script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+    <!-- 文件上传插件 -->
+    <script src="./lib/jquery-fileupload/jquery.ui.widget.js"></script>
+    <script src="./lib/jquery-fileupload/jquery.fileupload.js"></script>
     <script src="./js/common.js"></script>
     <script src="./js/isLogin.js"></script>
     <script src="./js/second.js"></script>
