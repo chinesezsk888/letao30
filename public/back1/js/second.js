@@ -70,9 +70,12 @@ $(function () {
        $('#secondAdd').text(txt);
        /*由于下拉菜单的按钮时没有提交功能的。所以这里利用隐藏域对添加的一级目录进行上传，
        而不同的一级目录对应不同的id,所以只要上传id即可*/
-       var id=$(this).id;
+    //    console.log($(this));
+       var id=$(this).context.dataset.id;
+    //    console.log(id);
        //将id上传至隐藏域，由隐藏域上传到后台从而确定添加的是什么一级目录
        $('[name="categoryId"]').val(id);
+    //    console.log($('[name="categoryId"]').val());
        //重置隐藏域的校验状态
        $('#form').data("bootstrapValidator").updateStatus("categoryId","VALID");
 
@@ -102,8 +105,10 @@ $("#fileupload").fileupload({
 //5.表单的校验
     
 $('#form').bootstrapValidator({
-    // 5.1配置排除项, 需要对隐藏域进行校验
+    // 5.1bootstrapValidator插件是默认对表单中的隐藏域（:hidden）、禁用域（:disabled）、不可见域（:not (visible)）”是不进行验证的。
+    //而在本项目中需要对隐藏域进行校验，
     excluded: [],
+    //表示被校验的字段，这里为空，就说明包括隐藏域（:hidden）、禁用域（:disabled）、不可见域（:not (visible)）也会被校验
 
     //5.2 指定校验时的图标显示，默认是bootstrap风格
     feedbackIcons: {
@@ -142,4 +147,31 @@ $('#form').bootstrapValidator({
     },
 
 })
+
+//6.点击模态框的添加按钮，重新渲染分页
+$('#form').on("success.form.bv", function (e) {
+    //禁止表单的默认提交
+    e.preventDefault();
+    $.ajax({
+        type: "post",
+        url: "/category/addSecondCategory",
+        dataType: "json",
+        data: $("#form").serialize(),
+        success: function (info) {
+            if (info.success) {
+                //添加成功，关闭模态框
+
+                // $('#secondModal').modal('hide');
+                //重新渲染页面,由于要求从前面添加，所以渲染第一页即可
+                currentPage = 1;
+                render();
+                //表单内容和状态重置
+                $("#form").data("bootstrapValidator").resetForm(true);
+            }
+        }
+    })
+})
+
+
+
 });
