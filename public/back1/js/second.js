@@ -95,6 +95,7 @@ $("#fileupload").fileupload({
     //   console.log(data);
       //console.log(data.result.picAddr);
       var result=data.result;
+      console.log(result)
       var picAddr=result.picAddr;
       $("#imgBox img").attr("src",picAddr);
       //// 将图片地址赋值给隐藏域,有隐藏域作为ajax请求发送给后台
