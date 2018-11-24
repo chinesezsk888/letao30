@@ -71,7 +71,9 @@ $(function () {
        /*由于下拉菜单的按钮时没有提交功能的。所以这里利用隐藏域对添加的一级目录进行上传，
        而不同的一级目录对应不同的id,所以只要上传id即可*/
     //    console.log($(this));
-       var id=$(this).context.dataset.id;
+    //    var id=$(this).context.dataset.id;
+           var id=$(this).data("id");
+           console.log(id);
     //    console.log(id);
        //将id上传至隐藏域，由隐藏域上传到后台从而确定添加的是什么一级目录
        $('[name="categoryId"]').val(id);
@@ -161,15 +163,19 @@ $('#form').on("success.form.bv", function (e) {
             if (info.success) {
                 //添加成功，关闭模态框
 
-                // $('#secondModal').modal('hide');
+                $('#secondModal').modal('hide');
                 //重新渲染页面,由于要求从前面添加，所以渲染第一页即可
                 currentPage = 1;
                 render();
                 //表单内容和状态重置
                 $("#form").data("bootstrapValidator").resetForm(true);
+                //下拉菜单的手动重置　
+                $('#secondAdd').text("请输入一级目录");
+                //图片显示区的重置
+                $('#imgBox img').attr("src","./images/none.png");
             }
         }
-    })
+    }) m
 })
 
 
